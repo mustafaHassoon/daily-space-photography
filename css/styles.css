@@ -1,1 +1,140 @@
 
+
+html, 
+body {
+  font-family: Arial, sans-serif;
+  background: #ccd0d4;
+}
+
+/*for the buttons of the list  */
+ul{
+  list-style-type: none;
+  margin-left: 40%;
+  align-items: center;
+}
+
+.list-class {
+  align-items: center;
+  list-style-type: none;
+  background:#ccd0d4; /* off white */
+  border: none;
+  box-shadow: 
+           -3px -3px 7px #ffffffb2,
+            3px 3px 5px rgba(94, 104, 121, 0.945);
+
+  
+  
+  padding: 16px 32px;
+  
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color:#ccd0d4;
+ 
+  border-radius: 32px;
+  
+
+ 
+}
+
+
+ /*modal styling and (visible , hidden)*/
+
+#modal-container {
+  position: fixed;
+  padding: 20px;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  
+  /* to show it above other content */
+  z-index: 999; 
+  
+  /* to allow scrolling if the screen is not high enough*/
+  overflow: auto; 
+  
+  /* this is used to center the modal */
+  display: grid;
+  text-align: center;
+}
+
+.modal {
+  margin: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 1);
+  padding: 15px;
+  width: 100%;
+  max-width: 600px;
+  text-align: left;
+  border-radius: 20px;
+  
+  
+}
+
+.modal-close {
+  float: right;
+  -webkit-appearance: none;
+  border: 0;
+  background: none;
+  color: #777;
+  text-decoration: underline;
+}
+
+.modal h1 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.modal p {
+  margin-bottom: 0;
+}
+
+#modal-container {
+  display: none;
+}
+
+#modal-container.is-visible {
+  /* CSS for modal container - add your own desired CSS styles here */
+  display: block;
+}
+/* styling the poster image */
+.modal-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  width: 50%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 
+           -3px -3px 7px #ffffffb2, 
+           3px 3px 5px rgba(94, 104, 121, 0.945);
+}
+
+.list-class:active{
+  box-shadow: inset  -4px -4px 10px rgba(255, 255, 255, 0.45), 
+  inset  4px 4px 7px rgba(94, 104, 121, 0.28);
+
+margin: 30px;
+display: inline-block;
+  
+  border: none;
+  
+}
+
+.list-class :focus{
+  color: red;
+}
+
+.movie-list {
+  align-items: center;
+}
