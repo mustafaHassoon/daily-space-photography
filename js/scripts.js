@@ -2,70 +2,66 @@
 //wraping the list inside IIFE
 var dailyNews = (function () {
 
-    var dailyNewsList = [];
-    var apiUrl = 'https://github.com/Rob--W/cors-anywhere/https://newsapi.org/v2/everything?q=apple&from=2020-10-16&to=2020-10-16&sortBy=popularity&apiKey=d120a29b6fc2414a8b1c0a882ae38c37';
+    var populareArtist = [];
+    var apiUrl = 'https://api.themoviedb.org/3/person/popular?api_key=ee0326c2a9a0b787ee75f169ae1003ff&language=en-US&page=1';
     
     //FUNCTION TO EXTRACT OBJECTS FROM THE LIST
     
     function getAll() {
-    return dailyNewsList;
+    return populareArtist;
     }
     
-    function add(newsItem) {
-    dailyNewsList.push(newsItem);
+    function add(artist) {
+    populareArtist.push(artist);
     }
     
     function loadList() {
     return fetch(apiUrl).then(function (response) {
     return response.json();
     }).then(function (json) {
-    json.results.forEach(function (newsItem) {
-    var newsItem = {
-    name: newsItem.title,
-    detailsUrl: newsItem.description,
-    publishDate: newsItem.publishedAt,
-    newsImage: newsItem.urlToImage
+    json.results.forEach(function (artist) {
+    var artist = {
+    name: artist.name,
+    knownFor: artist.known_for.original_title,
+    artistImage: artist.profile_path
+    
     };
-    add(newsItem);
-    console.log(newsItem);
+    add(artist);
+    console.log(artist);
     });
     }).catch(function (e) {
     console.error(e);
     })
     }
     
-    // FUNCTION TO ADD NEW LISTITEM FOR EACH newsItem OBJECT
-    function addListItem(newsItem) {
-    var newsItemList = document.querySelector('.newsItem-list');
+    // FUNCTION TO ADD NEW LISTITEM FOR EACH artist OBJECT
+    function addListItem(artist) {
+    var artistList = document.querySelector('.artist-list');
     var listItem = document.createElement('li');
     var button = document.createElement('button');
-    button.innerText = newsItem.name;
+    button.innerText = artist.name;
     button.classList.add('list-class');
     listItem.appendChild(button);
-    newsItemList.appendChild(listItem);
+    artistList.appendChild(listItem);
     // ADDING EVENT LISTENER TO THE BUTTON
     button.addEventListener('click', function (event) {
-    showDetails(newsItem);
+    showDetails(artist);
     });
     }
     
     //FUNCTION TO SHOW DETAILS OF THE LIST ITEM
-    function showDetails(newsItem) {
-    loadDetails(newsItem).then(function () {
-    console.log(newsItem);
-    showModal(newsItem);
+    function showDetails(artist) {
+    loadDetails(artist).then(function () {
+    console.log(artist);
+    showModal(artist);
     });
     }
     
-    function loadDetails(newsItem) {
+    function loadDetails(artist) {
     var url = apiUrl;
     return fetch(url).then(function (response) {
     return response.json();
     }).then(function (details) {
-    // ADD THE DETAILS TO THE ITEM
-    newsItem.imageUrl = details.poster_path;
-    newsItem.publishDateDate = details.publishDate_date;
-    newsItem.overview = details.overview;
     }).catch(function (e) {
     console.error(e);
     });
@@ -74,7 +70,7 @@ var dailyNews = (function () {
     // SHOW MODAL FUNCTION
     
     var modalContainer = document.querySelector('#modal-container');
-    function showModal(newsItem) {
+    function showModal(artist) {
     // Clear existing modal content
     modalContainer.innerHTML = '';
     // Creating div element in DOM
@@ -89,23 +85,14 @@ var dailyNews = (function () {
     closeButtonElement.addEventListener('click', hideModal);
     // Create element for title in modal content
     var titleElement = document.createElement('h1');
-    titleElement.innerText = newsItem.name;
-    // Create element for publishDate date in modal content
-    var publishDateDate = document.createElement('p');
-    publishDateDate.innerText = 'publishDate date : ' + newsItem.publishDate;
-    // Create element for overview in modal content
-    var overview = document.createElement('p');
-    overview.innerText = 'Overview : ' + newsItem.detailsUrl;
-    
+    titleElement.innerText = artist.name;
     // Create img in modal content
     var imageElement = document.createElement('img');
     imageElement.classList.add('modal-img');
-    imageElement.setAttribute('src', newsItem.newsImage);
+    imageElement.setAttribute('src','https://image.tmdb.org/t/p/original' +  artist.artistImage);
     
     modal.appendChild(closeButtonElement);
     modal.appendChild(titleElement);
-    modal.appendChild(publishDateDate);
-    modal.appendChild(overview);
     modal.appendChild(imageElement);
     modalContainer.appendChild(modal);
     modalContainer.classList.add('is-visible');
@@ -144,8 +131,8 @@ var dailyNews = (function () {
     
     dailyNews.loadList().then(function () {
     // Now the data is loaded!
-    dailyNews.getAll().forEach(function (newsItem) {
-    dailyNews.addListItem(newsItem);
+    dailyNews.getAll().forEach(function (artist) {
+    dailyNews.addListItem(artist);
     });
     });
 
