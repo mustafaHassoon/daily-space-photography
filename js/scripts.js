@@ -22,7 +22,7 @@ var dailyNews = (function () {
     json.results.forEach(function (artist) {
     var artist = {
     name: artist.name,
-    knownFor: artist.known_for.original_title,
+    knownFor: artist.known_for[0].original_title,
     artistImage: artist.profile_path
     
     };
@@ -41,6 +41,9 @@ var dailyNews = (function () {
     var button = document.createElement('button');
     button.innerText = artist.name;
     button.classList.add('list-class');
+    button.style.backgroundPosition = "center"
+    button.style.backgroundImage = "url('https://image.tmdb.org/t/p/original" + artist.artistImage + "')";
+    button.style.backgroundSize = "160px 240px"
     listItem.appendChild(button);
     artistList.appendChild(listItem);
     // ADDING EVENT LISTENER TO THE BUTTON
@@ -86,6 +89,10 @@ var dailyNews = (function () {
     // Create element for title in modal content
     var titleElement = document.createElement('h1');
     titleElement.innerText = artist.name;
+    // Create element for release date in modal content
+    var knownFor = document.createElement('p');
+    knownFor.innerText = 'Known for : ' + artist.knownFor;
+
     // Create img in modal content
     var imageElement = document.createElement('img');
     imageElement.classList.add('modal-img');
@@ -93,6 +100,7 @@ var dailyNews = (function () {
     
     modal.appendChild(closeButtonElement);
     modal.appendChild(titleElement);
+    modal.appendChild(knownFor);
     modal.appendChild(imageElement);
     modalContainer.appendChild(modal);
     modalContainer.classList.add('is-visible');

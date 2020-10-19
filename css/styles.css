@@ -9,23 +9,26 @@ body {
 /*for the buttons of the list  */
 ul{
   list-style-type: none;
-  margin-left: 40%;
+  margin-left: 10%;
+  margin-top: 10%;
   align-items: center;
+  max-width: 100 px ;
+  display: flex;
 }
 
-.list-class {
+.list-class,button {
+  width: 2000 px ;
+  height: 2000 px ;
+  outline: none;
   align-items: center;
   list-style-type: none;
-  background:#ccd0d4; /* off white */
+  /*background:#ccd0d4; /* off white */
   border: none;
   box-shadow: 
            -3px -3px 7px #ffffffb2,
             3px 3px 5px rgba(94, 104, 121, 0.945);
 
-  
-  
   padding: 16px 32px;
-  
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -34,12 +37,8 @@ ul{
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
-  background-color:#ccd0d4;
- 
+  /*background-color:#ccd0d4;*/
   border-radius: 32px;
-  
-
- 
 }
 
 
@@ -131,9 +130,6 @@ display: inline-block;
   
 }
 
-.list-class :focus{
-  color: red;
-}
 
 .movie-list {
   align-items: center;
