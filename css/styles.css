@@ -6,7 +6,6 @@ body {
   background: #ccd0d4;
   align-items: center;
 }
-
 /*for the buttons of the list  */
 ul{
   list-style-type: none;
@@ -16,9 +15,7 @@ ul{
   max-width: 100 px ;
   display: flex;
 }
-
 .list-class {
-  
   outline: none;
   align-items: center;
   list-style-type: none;
@@ -27,7 +24,6 @@ ul{
   box-shadow: 
            -3px -3px 7px #ffffffb2,
             3px 3px 5px rgba(94, 104, 121, 0.945);
-
   /*padding: 50px 50px 100px 50px;*/
   text-align: center;
   text-decoration: none;
@@ -46,13 +42,8 @@ ul{
   height: 200px;
   position: relative;
   width: 150px;
-
-  
 }
-
-
  /*modal styling and (visible , hidden)*/
-
 #modal-container {
   position: fixed;
   padding: 20px;
@@ -62,18 +53,14 @@ ul{
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  
   /* to show it above other content */
   z-index: 999; 
-  
   /* to allow scrolling if the screen is not high enough*/
   overflow: auto; 
-  
   /* this is used to center the modal */
   display: grid;
   text-align: center;
 }
-
 .modal {
   margin: auto;
   display: inline-block;
@@ -84,10 +71,7 @@ ul{
   max-width: 600px;
   text-align: left;
   border-radius: 20px;
-  
-  
 }
-
 .modal-close {
   float: right;
   -webkit-appearance: none;
@@ -96,20 +80,18 @@ ul{
   color: #777;
   text-decoration: underline;
 }
-
 .modal h1 {
-  margin-top: 0;
+  margin: 10 px, 10 px, 10 px, 10 px ;
   text-align: center;
 }
-
 .modal p {
-  margin-bottom: 0;
-}
+  margin: 10 px, 10 px, 10 px, 10 px ;
+  text-align: center;
 
+}
 #modal-container {
   display: none;
 }
-
 #modal-container.is-visible {
   /* CSS for modal container - add your own desired CSS styles here */
   display: block;
@@ -127,19 +109,26 @@ ul{
            -3px -3px 7px #ffffffb2, 
            3px 3px 5px rgba(94, 104, 121, 0.945);
 }
-
 .list-class:active{
   box-shadow: inset  -4px -4px 10px rgba(255, 255, 255, 0.45), 
   inset  4px 4px 7px rgba(94, 104, 121, 0.28);
-
-margin: 30px;
-display: inline-block;
-  
+  margin: 30px;
+  display: inline-block;
   border: none;
-  
 }
-
-
 .movie-list {
   align-items: center;
+}
+.modal-footer {
+  margin: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  background: rgba(99, 90, 73, 0.151);
+  padding: 15px;
+  width: 100%;
+  max-width: 600px;
+  min-height: 20 px;
+  text-align: left;
+  border-radius: 20px;
+  z-index: 999; 
 }

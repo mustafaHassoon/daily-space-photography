@@ -30,7 +30,7 @@ var dailyNews = (function () {
           console.error(e);
         });
     }
-    // FUNCTION TO ADD NEW LISTITEM FOR EACH artist OBJECT
+    // FUNCTION TO ADD NEW LIST ITEM FOR EACH artist OBJECT
     function addListItem(artist) {
     var $artistList = $(".artist-list");
     var $listItem = $('<li ></li>');
@@ -72,6 +72,7 @@ var dailyNews = (function () {
     $modalContainer.addClass('is-visible');
     // Creating div element in DOM
     var modal = $('<div class="modal"></div>');
+    var modalFooter = $('<div class="modal-footer"></div>');
     // create closing button in modal content
     var closeButtonElement = $(
       '<button class="modal-close">' + "Close" + "</button>"
@@ -91,6 +92,7 @@ var dailyNews = (function () {
     modal.append(imageElement);
     modal.append(modalTitle);
     modal.append(knownFor);
+    modal.append(modalFooter);
     $modalContainer.append(modal);
    };
    function hideModal() {
