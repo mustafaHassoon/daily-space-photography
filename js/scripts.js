@@ -36,18 +36,17 @@ var dailyNews = (function () {
     
     // FUNCTION TO ADD NEW LISTITEM FOR EACH artist OBJECT
     function addListItem(artist) {
-    var artistList = document.querySelector('.artist-list');
-    var listItem = document.createElement('li');
-    var button = document.createElement('button');
-    button.innerText = artist.name;
-    button.classList.add('list-class');
-    button.style.backgroundPosition = "center"
-    button.style.backgroundImage = "url('https://image.tmdb.org/t/p/original" + artist.artistImage + "')";
-    button.style.backgroundSize = "160px 240px"
-    listItem.appendChild(button);
-    artistList.appendChild(listItem);
+    var $artistList = $(".artist-list");
+    var $listItem = $('<li ></li>');
+    var $button = $('<button class="list-class">' + artist.name + "</button>" );
+    $('listItem').append($button);
+    $button.css("background-image", "url('https://image.tmdb.org/t/p/original" + artist.artistImage + "')");
+    $button.css("background-position", "center");
+    $button.css("background-size", "160px 240px");
+    $listItem.append($button);
+    $artistList.append($listItem);
     // ADDING EVENT LISTENER TO THE BUTTON
-    button.addEventListener('click', function (event) {
+    $button.on("click", function (event) {
     showDetails(artist);
     });
     }
@@ -62,9 +61,9 @@ var dailyNews = (function () {
     
     function loadDetails(artist) {
     var url = apiUrl;
-    return fetch(url).then(function (response) {
-    return response.json();
-    }).then(function (details) {
+    return $.ajax(url, {dataType: 'json'}).then(function(responseJSON) {
+        return responseJSON;
+      }).then(function(details) {
     }).catch(function (e) {
     console.error(e);
     });
@@ -72,56 +71,65 @@ var dailyNews = (function () {
     
     // SHOW MODAL FUNCTION
     
-    var modalContainer = document.querySelector('#modal-container');
+    var $modalContainer = $('#modal-container');
     function showModal(artist) {
     // Clear existing modal content
-    modalContainer.innerHTML = '';
+    $modalContainer.empty();
+    //add class to modal
+    $modalContainer.addClass('is-visible');
     // Creating div element in DOM
-    var modal = document.createElement('div');
+    var modal = $('<div class="modal"></div>');
     // adding class to div DOM element
-    modal.classList.add('modal');
+    //$modal.addClass('modal');
     // create closing button in modal content
-    var closeButtonElement = document.createElement('button');
-    closeButtonElement.classList.add('modal-close');
-    closeButtonElement.innerText = 'Close';
+    var closeButtonElement = $(
+      '<button class="modal-close">' + "Close" + "</button>"
+    );
+    closeButtonElement.on("click", hideModal);
+    //var closeButtonElement = document.createElement('button');
+    //closeButtonElement.classList.add('modal-close');
+    //closeButtonElement.innerText = 'Close';
     // Add event listener to close modal when botton is clicked
-    closeButtonElement.addEventListener('click', hideModal);
+    //closeButtonElement.addEventListener('click', hideModal);
+
     // Create element for title in modal content
-    var titleElement = document.createElement('h1');
-    titleElement.innerText = artist.name;
+    var modalTitle = $('<h1 class="modal-title">' + artist.name + "</h1>");
+    //var titleElement = document.createElement('h1');
+    //titleElement.innerText = artist.name;
+
     // Create element for release date in modal content
-    var knownFor = document.createElement('p');
-    knownFor.innerText = 'Known for : ' + artist.knownFor;
+    var knownFor = $(
+      '<p class="modal-details">' + "Known for : " + artist.knownFor + "</p>"
+    );
+    //var knownFor = document.createElement('p');
+    //knownFor.innerText = 'Known for : ' + artist.knownFor;
 
     // Create img in modal content
-    var imageElement = document.createElement('img');
-    imageElement.classList.add('modal-img');
-    imageElement.setAttribute('src','https://image.tmdb.org/t/p/original' +  artist.artistImage);
+
+    var imageElement = $('<img class="modal-img">');
+    imageElement.attr("src", 'https://image.tmdb.org/t/p/original' +  artist.artistImage);
+    //var imageElement = document.createElement('img');
+    //imageElement.classList.add('modal-img');
+    //imageElement.setAttribute('src','https://image.tmdb.org/t/p/original' +  artist.artistImage);
+
+    // close if the user press esc
+    modal.append(closeButtonElement);
+    modal.append(imageElement);
+    modal.append(modalTitle);
+    modal.append(knownFor);
+    $modalContainer.append(modal);
+
+   };
+   function hideModal() {
+    var $modalContainer = $("#modal-container");
+    $modalContainer.removeClass("is-visible");
+  }
+   //function hideModal() {
+    //modalContainer.classList.remove('is-visible');
+    //}
     
-    modal.appendChild(closeButtonElement);
-    modal.appendChild(titleElement);
-    modal.appendChild(knownFor);
-    modal.appendChild(imageElement);
-    modalContainer.appendChild(modal);
-    modalContainer.classList.add('is-visible');
-    }
-    
-    function hideModal() {
-    modalContainer.classList.remove('is-visible');
-    }
-    
-    window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-    hideModal();
-    }
-    });
-    modalContainer.addEventListener('click', (e) => {
-    // close if the user clicks directly on the overlay
-    var target = e.target;
-    if (target === modalContainer) {
-    hideModal();
-    }
-    });
+  
+ 
    
     return {
     add: add,

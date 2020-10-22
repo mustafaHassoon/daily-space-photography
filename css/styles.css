@@ -4,6 +4,7 @@ html,
 body {
   font-family: Arial, sans-serif;
   background: #ccd0d4;
+  align-items: center;
 }
 
 /*for the buttons of the list  */
@@ -16,9 +17,8 @@ ul{
   display: flex;
 }
 
-.list-class,button {
-  width: 2000 px ;
-  height: 2000 px ;
+.list-class {
+  
   outline: none;
   align-items: center;
   list-style-type: none;
@@ -28,17 +28,26 @@ ul{
            -3px -3px 7px #ffffffb2,
             3px 3px 5px rgba(94, 104, 121, 0.945);
 
-  padding: 16px 32px;
+  /*padding: 50px 50px 100px 50px;*/
   text-align: center;
   text-decoration: none;
+  color: white;
+  text-shadow: 2px 2px 5px rgb(198, 230, 235);
   display: inline-block;
+  -webkit-text-stroke: 0.4px black;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 8px 4px;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
   /*background-color:#ccd0d4;*/
   border-radius: 32px;
+  align-items: center;
+  height: 200px;
+  position: relative;
+  width: 150px;
+
+  
 }
 
 
