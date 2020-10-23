@@ -16,23 +16,26 @@ ul{
   display: flex;
 }
 .list-class {
+  
   outline: none;
-  align-items: center;
+  align-self: flex-end;
   list-style-type: none;
   /*background:#ccd0d4; /* off white */
   border: none;
   box-shadow: 
            -3px -3px 7px #ffffffb2,
             3px 3px 5px rgba(94, 104, 121, 0.945);
-  /*padding: 50px 50px 100px 50px;*/
-  text-align: center;
+  font-family: 'fantasy';
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 20px;
   text-decoration: none;
   color: white;
-  text-shadow: 2px 2px 5px rgb(198, 230, 235);
+  text-shadow: 1px 4px 3px rgba(20, 20, 20, 0.699);
   display: inline-block;
   -webkit-text-stroke: 0.4px black;
-  font-size: 16px;
-  margin: 8px 4px;
+  
+  margin: 8px 8px;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
@@ -102,7 +105,7 @@ ul{
   margin-left: auto;
   margin-right: auto;
   margin-top: 15px;
-  width: 50%;
+  width: 60%;
   height: auto;
   border-radius: 20px;
   box-shadow: 
