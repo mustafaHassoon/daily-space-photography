@@ -9,11 +9,15 @@ body {
 /*for the buttons of the list  */
 ul{
   list-style-type: none;
+  display: flex;
   margin-left: 10%;
   margin-top: 10%;
+  margin-right: 10%;
   align-items: center;
-  max-width: 100 px ;
-  display: flex;
+ 
+  
+  
+ 
 }
 .list-class {
   
@@ -70,9 +74,9 @@ ul{
   box-sizing: border-box;
   background: rgba(255, 255, 255, 1);
   padding: 15px;
-  width: 100%;
+  width: 40%;
   max-width: 600px;
-  text-align: left;
+  
   border-radius: 20px;
 }
 .modal-close {
@@ -127,7 +131,7 @@ ul{
   display: inline-block;
   box-sizing: border-box;
   background: rgba(99, 90, 73, 0.151);
-  padding: 15px;
+  padding: 5px;
   width: 100%;
   max-width: 600px;
   min-height: 20 px;

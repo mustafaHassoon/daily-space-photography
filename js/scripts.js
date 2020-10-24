@@ -2,15 +2,15 @@
 //wraping the list inside IIFE
 var dailyNews = (function () {
 
-    var popularArtist = [];
+    var popularArtists = [];
     var apiUrl = 'https://api.themoviedb.org/3/person/popular?api_key=ee0326c2a9a0b787ee75f169ae1003ff&language=en-US&page=1';
     //FUNCTION TO EXTRACT OBJECTS FROM THE LIST
     function getAll() {
-    return popularArtist;
+    return popularArtists;
     }
     //FUNCTION TO add OBJECTS LIST ITEM
     function add(artist) {
-    popularArtist.push(artist);
+    popularArtists.push(artist);
     }
     //Function to load pokemon list from API
     function loadList() {
