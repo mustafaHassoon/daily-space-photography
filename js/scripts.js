@@ -72,6 +72,9 @@ var dailyNews = (function () {
     $modalContainer.addClass('is-visible');
     // Creating div element in DOM
     var modal = $('<div class="modal"></div>');
+    modal.css("background-image", "url('https://image.tmdb.org/t/p/original" + artist.artistImage + "')");
+    modal.css("background-position", "center");
+    modal.css("background-size", "480px 720px");
     var modalFooter = $('<div class="modal-footer"></div>');
     // create closing button in modal content
     var closeButtonElement = $(
@@ -85,11 +88,11 @@ var dailyNews = (function () {
       '<p class="modal-details">' + "Known for : " + artist.knownFor + "</p>"
     );
     // Create img in modal content
-    var imageElement = $('<img class="modal-img">');
-    imageElement.attr("src", 'https://image.tmdb.org/t/p/original' +  artist.artistImage);
+    //var imageElement = $('<img class="modal-img">');
+    //imageElement.attr("src", 'https://image.tmdb.org/t/p/original' +  artist.artistImage);
     // close if the user press esc
     modal.append(closeButtonElement);
-    modal.append(imageElement);
+    //modal.append(imageElement);
     modal.append(modalTitle);
     modal.append(knownFor);
     modal.append(modalFooter);
