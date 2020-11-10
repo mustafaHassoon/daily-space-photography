@@ -1,11 +1,8 @@
-
-
 html, 
 body {
   font-family: Arial, sans-serif;
   background: #ccd0d4;
-  
-  
+ 
 }
 /*for the buttons of the list  */
 ul{
@@ -17,5 +14,4 @@ ul{
   max-height: 50%;
   margin-right: 10%;
   align-items: center;
-  
 }
